@@ -5,7 +5,6 @@ import { Loader2 } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { StatutBadge } from './StatutBadge'
 import { MODULE_LABELS, STATUT_LABELS, type MesureConformite, type StatutMesure } from '@/types/mesure'
 import { useUpdateMesure } from '@/hooks/useMesures'
 
