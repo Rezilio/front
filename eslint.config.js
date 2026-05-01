@@ -2,11 +2,12 @@ import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import react from 'eslint-plugin-react'
 import tseslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 
 export default [
-  // Fichiers ignores (remplace .eslintignore)
+  // Fichiers ignores
   {
     ignores: ['dist/**', 'node_modules/**', 'coverage/**'],
   },
@@ -33,12 +34,19 @@ export default [
       '@typescript-eslint': tseslint,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      react,
+    },
+    settings: {
+      react: { version: 'detect' },
     },
     rules: {
       // TypeScript
       ...tseslint.configs.recommended.rules,
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/no-explicit-any': 'warn',
+
+      // React — nouveau JSX transform (React 17+), pas besoin d'importer React
+      ...react.configs.flat['jsx-runtime'].rules,
 
       // React Hooks
       ...reactHooks.configs.recommended.rules,
